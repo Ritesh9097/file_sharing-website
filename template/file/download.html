@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{file.name}}
+                    </h4>
+                    <p class="lead">
+                        size: {% widthratio file.size 1024 1 %} kb
+                    </p>
+                    <p class="lead">{{file.upload_date}}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-danger" href="{% url 'download_file' file.pk%}">download</a>
+                    <button class="btn share btn-success" data-toggle="tooltip" title="url copied" data-clipboard-text="{{ request.get_host }}{{file.path.url}}">
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(function () {
+        var clipboard = new ClipboardJS('.share');
+        clipboard.on('success', function(e) {
+            alert("url copied")
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
+        });
+        clipboard.on('error', function(e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
+        $('.share').tooltips('show')
+    });
+</script>
+{% endblock js %}
+

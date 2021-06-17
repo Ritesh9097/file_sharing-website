@@ -1,0 +1,71 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+<style>
+    .register {
+
+        left: 200px;
+        top: 30px;
+
+        background-color: lightyellow;
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        box-sizing: border-box;
+        box-shadow: 12px 8px 10px -6px;
+    }
+
+    form li {
+        font-size: xx-small;
+
+        margin-left: 5px;
+
+    }
+
+    form {
+        color: blueviolet;
+        width: 50vw;
+        height: 56vh;
+        
+    }
+
+    form input {
+        border-radius: 2px;
+        width: 40vw;
+        color: darkblue;
+        
+    }
+    h2{
+        left: 60px;
+    }
+    
+    
+
+    footer {
+        width: 100vw;
+        background-color: black;
+        position: relative;
+        top: 561px;
+        height: 179px;
+</style>
+
+{% endblock css %}
+
+
+{% block body %}
+<div class="row">
+    <h2>Register</h2>
+    <div class="register">
+        <form method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button class="btn btn-drak">Create Account</button>
+        </form>
+        <a href="{% url 'login' %}">Back to login</a>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,89 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+{% block css %}
+
+<style>
+    #img {
+        position: absolute;
+        margin-right: 90px;
+        width: 350px;
+        margin-left: 720px;
+        margin-top: 78px;
+
+    }
+
+    .card-body {
+        background-color: rgb(98, 0, 255);
+        height: 70vh;
+    }
+
+    .h1 {
+        color: whitesmoke;
+        margin: 75px;
+        padding-top: 50px;
+        font-size: 0vmax;
+    }
+
+    .h3 {
+        color: whitesmoke;
+        padding-bottom: 10px;
+        margin-left: 70px;
+    }
+
+    .xy {
+        height: 100px;
+        margin-left: 40px;
+        margin-right: 12px;
+
+    }
+
+    .c-body {
+        background-color: #F5F6F8;
+        height: 40vh;
+    }
+
+    .kk {
+        margin-left: 40px;
+        margin-top: 20vh;
+    }
+</style>
+{% endblock css %}
+
+
+{% block body %}
+<div class="col-md-6">
+    <img src="{% static 'download.jpg' %}" alt="" id="img">
+</div>
+<div class="card-body">
+    <div class="h1">File Sharing</div><br>
+    <div class="h3"> File_Sharing is more than<br> just secure file</div>
+
+
+</div><br><br>
+<div class="xy">
+    <p>File sharing is the practice of distributing or providing access to the digital media, such as computer programs,
+        multimedia files (audio, images, and video), documents, presentations or electronic books.<br>
+        File sharing may be achieved in a number of ways.Common methods of storage, transmission and dispersion include
+        manual sharing utilizing removable media, centralized servers on computer networks,
+        World Wide Web-based hyperlinked documents, and the use of distributed peer-to-peer networking..</p>
+</div>
+</div>
+</div>
+<div class="c-body">
+    <div class="kk">
+        File sharing is the act of sharing one or more computer files over a network with someone in the same house, a
+        team member at work, a friend in another country. <br>You can also use file sharing to access your own files
+        from anywhere.
+        You can share files over a local network in an office or at home, or you can share files over the internet.
+        <br>Here are several file-sharing methods that you can use for any reason.</div>
+
+</div>
+
+<div class="statements">
+    “Box is built on the principle of bringing people together to do amazing work.
+    We do this by creating an environment where we trust each other,
+    work collaboratively and have a deep respect for one another.”
+</div>
+{% endblock body %}

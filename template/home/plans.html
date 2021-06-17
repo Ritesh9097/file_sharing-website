@@ -1,0 +1,60 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+  #a {
+    background-color: rgb(84, 84, 185);
+    z-index: 1;
+    height: 50vh;
+    font-size: xx-large;
+    color: white;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .b {
+    color: white;
+    text-align: center;
+    font-size: large;
+  }
+
+  .card-text {
+    font-size: x-large;
+    text-align: center;
+  }
+</style>
+{% endblock css %}
+
+
+
+{% block body %}
+<div id="a">
+  Start Using File Share for free!
+  <div class="b">
+    Our free plan lets you get going right away. Switch to a Pro plan to get more storage capacity in your accounts.
+  </div>
+</div>
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <div class="card" style="width: 18rem;">
+    <img src="static/share.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">5 TB storage <br><br>
+        upload file <i class="fas fa-upload"></i> <br><br>
+        share file <i class="fas fa-share-alt"></i> <br><br>
+        download file <i class="fas fa-download"></i><br><br>
+      </p>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="static/share-files.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+        content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  {% endblock body %}

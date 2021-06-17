@@ -1,0 +1,121 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{%load crispy_forms_tags %}
+
+{% block css %}
+<style>
+    #div3 {
+
+        background-color: rgb(236, 158, 95);
+        height: 100vh;
+        width: auto;
+
+    }
+
+    .div1 {
+        background-color: lightyellow;
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        box-sizing: border-box;
+        box-shadow: 12px 8px 10px -6px;
+        
+    }
+
+    #form {
+        width: 60%;
+        margin-left: 124px;
+    }
+
+    .form-control {
+        display: block;
+        width: 50%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: -10.625rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        text-shadow: 2px 2px 2px blueviolet;
+        color: aqua;
+        text-align: center;
+        font-size: larger;
+
+    }
+
+
+
+    #btn {
+        border: none;
+        height: 45px;
+        width: 113px;
+        background-color: rgb(0, 139, 46);
+        /* margin: -2px; */
+        margin-top: 11px;
+        color: white;
+        box-sizing: border-box;
+        box-shadow: 3px 3px 2px rgb(0, 255, 42);
+        border-radius: 12px;
+
+    }
+
+    .div2 {
+        
+        margin-left: 120px;
+        margin-top: 20px;
+        text-decoration: none;
+
+
+    }
+
+    .a :hover {
+        text-decoration: salmon;
+
+
+    }
+
+    .col-md-6 {
+        top: 300px;
+        left: 45px;
+        width: 500px;
+        
+
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div id="div3">
+
+    <div class="div1">
+       <center><h1> <i class="fa fa-user"></i></h1></center>
+        <h2>Login</h2>
+        <form method="post" id="form">
+            {% csrf_token %}
+            {{form|crispy}}
+
+            <button id="btn">Login</button>
+        </form><br>
+        <div class="div2">
+            <a href="{% url 'password_reset' %}" class="a">Rest Password</a><br>
+            <a href="{% url 'register' %}" class="a">Create Account</a><br>
+            
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <img src="{% static 'homepage-banner-3.png'%}" alt="">
+    </div>
+</div>
+{% endblock body %}

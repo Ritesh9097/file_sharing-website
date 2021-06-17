@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block css %}
+    <style>
+      
+        .file{
+            position: relative;
+            top: 80px;
+            left: 140px;
+        }
+    </style>
+{% endblock css %}
+    
+
+{% block body %}
+    <div class="row file">
+       <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'file_explorer.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">View file</h5>
+              <p class="card-text">user can see his uplode file</p>
+              <a href="{% url 'views' %}" class="btn btn-primary">view file</a>
+            </div>
+          </div>
+       </div> 
+       <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'file_explorer.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">upload file</h5>
+              <p class="card-text">user can upload his file</p>
+              <a href="{% url 'upload_file' %}" class="btn btn-primary">upload file</a>
+            </div>
+          </div>
+           
+       </div>
+    </div>
+{% endblock body %}
+    
+

@@ -1,0 +1,174 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    .main {
+        width: 100vw;
+        height: 100vh;
+        background-color: skyblue;
+    }
+
+    #title {
+        position: relative;
+        top: 106px;
+        left: 31px;
+        font-size: xxx-large;
+        width: 100vw;
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-family: Farro;
+    }
+
+    #about_title {
+        position: relative;
+        top: 127px;
+        width: 247px;
+        left: 53px;
+    }
+
+    #try_free {
+        position: relative;
+        top: 80px;
+        left: 50px;
+        height: 46px;
+        border: none;
+        width: 211px;
+        background-color: darkblue;
+    }
+
+    #try_free a {
+        color: white;
+        font-size: larger;
+        text-transform: capitalize;
+        letter-spacing: 3px;
+    }
+
+    #img {
+        position: relative;
+        z-index: 10;
+        box-shadow: 12px 8px 10px -6px;
+        top: 300px;
+        right: 91px;
+        width: 600px;
+    }
+
+    #plan {
+        left: 357px;
+        text-align: center;
+        position: relative;
+        font-size: xxx-large;
+        top: 26px;
+        text-transform: capitalize;
+    }
+
+    .card1 {
+        margin-top: 84px;
+    }
+
+    .card-body1 {
+        padding: 10px 10px 10px 10px;
+    }
+
+    p {
+        margin-top: 0;
+        padding: 46px 4px 4px 7px;
+        margin-bottom: 1rem;
+        font-size: x-large;
+    }
+    .btn{
+        
+        width: 250px;
+    height: 46px;
+    }
+     a.btn.btn-primary{
+        color: rgb(252, 243, 243);
+        padding: 3px 3px 3px 3px;
+        font-size: x-large;
+        text-transform: capitalize;
+    }
+    h5{
+    
+        width: auto;
+        height: 35px;
+        
+    }
+</style>
+
+{% endblock css %}
+
+{% block body %}
+<div class="main">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 id="title">
+                We can share and save every kind of file here.
+            </h1>
+
+            <p id="about_title">
+                File_Sharing is more than just secure file storage.
+                
+                
+            </p>
+            <button id="try_free">
+                <a href="{% url 'file' %}"> try it free</a>
+            </button>
+
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'share.png' %}" alt="" id="img">
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<div class="container">
+    <span id="plan"> get your best plan's here</span>
+    <div class="row card1">
+        <div class="col-md-4">
+            <div class="card card-body1" style="width: 20rem; height: 30rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title">Basic plane</h5>
+                    <p class="card-text"><i class="fas fa-folder">5 TB (5,000 GB) of space for secure storage</i></p>
+                    <p class="card-text"><i class="fas fa-share-alt">Easy-to-use sharing and collaboration tools</i></p>
+                    <p class="card-text"><i class="fas fa-rupee-sign">500</i></p>
+                    <a href="#" class="btn btn-primary">buy now</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body1" style="width: 20rem; height: 30rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title">Advance plane</h5>
+                    <p class="card-text"><i class="fas fa-folder">10 TB (10,000 GB) of space for secure storage</i></p>
+                    <p class="card-text"><i class="fas fa-share-alt">Easy-to-use sharing and collaboration tools</i></p>
+                    <p class="card-text"><i class="fas fa-rupee-sign">1000</i></p>
+                    <a href="#" class="btn btn-primary">buy now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body1" style="width: 20rem; height: 30rem;">
+
+                <div class="card-body">
+                    <h5 class="card-title">Priemium plane</h5>
+                    <p class="card-text"><i class="fas fa-folder">20 TB (20,000 GB) of space for secure storage</i></p>
+                    <p class="card-text"><i class="fas fa-share-alt">Easy-to-use sharing and collaboration tools</i></p>
+                    <p class="card-text"><i class="fas fa-rupee-sign">2000</i></p>
+                    <a href="#" class="btn btn-primary">buy now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
