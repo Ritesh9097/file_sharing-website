@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
 from . import views
 
 
@@ -28,7 +29,11 @@ urlpatterns = [
     path("upload_file", views.upload_file, name="upload_file"),
     path("profile", views.profile, name="profile"),
     path("download/<int:pk>",views.download, name="download"),
-    path("getfile/<int:id>",views.download_item, name="download_file")
+    path("getfile/<int:id>",views.download_item, name="download_file"),
+    path('config/', views.stripe_config),  # new
+    path('create-checkout-session/', views.create_checkout_session), # new
+    path('success/', views.success_pay), # new
+    path('cancelled/', views.cancel_pay), # new
 
     
     

@@ -5,14 +5,14 @@
     <title>File_sharing</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
-
+        
         header {
             width: 100vw;
             height: 100px;
             position: sticky;
             background-color: whitesmoke;
         }
-
+        
         ul {
             display: flex;
             flex-direction: row;
@@ -22,42 +22,42 @@
             padding: 26px 0px 0px 0px;
             font-size: x-large;
         }
-
+        
         #logo {
             font-weight: 900;
             font-family: 'Farro', sans-serif;
             font-size: xx-large;
         }
-
+        
         ul li a {
             color: rgb(12, 0, 0);
         }
-
+        
         ul li a:hover {
             text-decoration: none;
             color: rgb(14, 1, 1);
             font-size: x-large;
             opacity: 0.9;
-
+            
         }
-
+        
         footer {
             width: 100vw;
             background-color: black;
             position: relative;
             top: 185px;
             height: 179px;
-
+            
         }
-
+        
         .footer {
             color: rgb(255, 255, 255);
             position: relative;
             left: 221px;
             top: 63px;
-
+            
         }
-
+        
         #footer {
             top: 6px;
             position: relative;
@@ -70,33 +70,33 @@
         }
     </style>
     {% block css %}
-
+    
     {% endblock css %}
-
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" />
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
     <!--fontasowme link-->
-
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-
-
+    
+    
     <header>
         <nav>
             <ul>
                 <li> <span id="logo">
-                        <a href="{% url 'home' %}"><i class="fas fa-folder"></i> file_Sharing </a>
-                    </span>
-
+                    <a href="{% url 'home' %}"><i class="fas fa-folder"></i> file_Sharing </a>
+                </span>
+                
                 <li>
                     <a href="{% url 'plans' %}"> plans</a>
                 </li>
@@ -106,15 +106,15 @@
                 <li>
                     {% if user.is_authenticated %}
                     <!-- ye same h? awesome-->
-                <li>
-                    <a href="{% url 'views' %}">view my files</a>
-                </li>
-                <li>
-                    <a href="{% url 'upload_file' %}">upload files</a>
-                </li>
-
-                <div class="dropdown">
-                    <button class="btn btn-whitesmoke dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <li>
+                        <a href="{% url 'views' %}">view my files</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'upload_file' %}">upload files</a>
+                    </li>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-whitesmoke dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <b>Hello {{ user.username|default:'Guest' }}</b>
                     </button>
@@ -134,72 +134,95 @@
                         <li>
                             <a href="{% url 'register' %}" class="a">Sign_Up    </a>
                         </li>
-
+                        
                         {% endif %}
                     </div>
                 </div>
-                </li>
-                <li>
-
-
+            </li>
+            <li>
+                
+                
             </ul>
         </nav>
     </header>
-
+    {% if messages %}
+    <div aria-live="polite" aria-atomic="true" >
+        <div style="position:fixed; top: 7%; right: 1%;">
+            {% for message in messages %}
+            <div class="toast " role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                {% if message.tags  %}
+                <div class="toast-header bg-{{message.tags}} text-white ">
+                    <strong class="mr-auto ">{{ message.tags }}</strong>
+                    <small class="text-white">just now</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                
+                <div class="toast-body">
+                    {{message}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
     {% block body %}
-
+    
     {% endblock body %}
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <footer>
         <span id="footer"><i class="fas fa-user"></i> contact_us</span>
         <div class="row footer">
-
+            
             <div class="col-md-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-telegram" viewBox="0 0 16 16">
-                    <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
-                </svg>
-                <i class="bi bi-telegram" style="color: white;">@Ritesh9097</i>
-            </div>
-            <div class="col-md-3">
-                <i class="far fa-envelope" style="font-size:20px"> riteshkumar9420@gmail.com</i>
-            </div>
-            <div class="col-md-3">
-                <i class="fab fa-instagram" style="font-size:20px"> riteshsharma1478</i>
-            </div>
-
+                class="bi bi-telegram" viewBox="0 0 16 16">
+                <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
+            </svg>
+            <i class="bi bi-telegram" style="color: white;">@Ritesh9097</i>
         </div>
+        <div class="col-md-3">
+            <i class="far fa-envelope" style="font-size:20px"> riteshkumar9420@gmail.com</i>
+        </div>
+        <div class="col-md-3">
+            <i class="fab fa-instagram" style="font-size:20px"> riteshsharma1478</i>
+        </div>
+        
+    </div>
+    
+</footer>
 
-    </footer>
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
 
 {% block js %}
-    
+
 {% endblock js %}
-    
+
 </body>
 
 </html>

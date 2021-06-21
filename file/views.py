@@ -1,6 +1,6 @@
 from .forms import FileForm
 from django.http.request import HttpRequest
-from django.http.response import FileResponse, HttpResponse, HttpResponseRedirect
+from django.http.response import FileResponse, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import File, Download
 from django.contrib import messages
@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 import os
 from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
+from django.views.decorators.csrf import csrf_exempt # new
+from django.conf import settings # new
+import stripe
 
 # Create your views here.
 
@@ -81,3 +84,47 @@ def download_item(request, id):
     response = FileResponse(item.path.file, content_type = "file/%s" % file_extension) 
     response["Content-Disposition"] = "attachment;filename=%s.%s" %(slugify(item.path.name)[:100], file_extension) 
     return response
+
+
+@csrf_exempt
+def stripe_config(request):
+    if request.method == 'GET':
+        stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
+        return JsonResponse(stripe_config, safe=False)
+
+@csrf_exempt
+def create_checkout_session(request):
+    if request.method == 'GET':
+        domain_url = 'http://localhost:8000/'
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        price = request.GET.get('price')
+        plan = request.GET.get('plan')
+        try:
+          
+            checkout_session = stripe.checkout.Session.create(
+                success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=domain_url + 'cancelled/',
+                payment_method_types=['card'],
+                mode='payment',
+                line_items=[
+                    {
+                        'name': plan,
+                        'quantity': 1,
+                        'currency': 'inr',
+                        'amount': price,
+                    }
+                ],
+                customer_email=request.user.email,
+            )
+            return JsonResponse({'sessionId': checkout_session['id']})
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
+
+
+def success_pay(request):
+    messages.success(request,"you have purchase the plan successfully")
+    return redirect('home')
+
+def cancel_pay(request):
+    messages.error(request,"you have cancel the payment")
+    return redirect('home')

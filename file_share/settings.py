@@ -138,3 +138,6 @@ TASK_UPLOAD_FILE_TYPES = ['pdf',
                             'msword',
                             'application',]
 TASK_UPLOAD_FILE_MAX_SIZE = "5242880"
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51J4j0bSD3iNmXC7GYQUJk7hzcOBmBnMnZZy2u42j2XE83L1tFeJ5Lf69kZ3zbKQo7ZpJ9novsn3SWKukYNDuvxfx00N2WbRSL5'
+STRIPE_SECRET_KEY = 'sk_test_51J4j0bSD3iNmXC7G62Qvcj0ZQ6rUECGALz7H9ylIiAnF3lMpbvcskybyu4nIJF9D1Z3g1Mktahww2z3NvPqsoWKr00jxVN9FnT'
